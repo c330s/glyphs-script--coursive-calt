@@ -15,10 +15,10 @@ Please be cautious, _use a copy of your font_ and don’t blame me, if anything 
 Basically the original script builds code for a calt-feature, that changes glyphs to its isolated, initial, medial and final counterpart (glyphs with `.isol`, `.init`, `.medi` and `.fina` suffix).
 
 With the calt-feature inactive, only the bas glyph is used:
-![image](no-calt-a.png)
+![image](img/no-calt-a.png)
 
 With active calt-feature all glyphs are substituted by their matching positional counterpart:
-![image](calt-a.png)
+![image](img/calt-a.png)
 In this case: `a.isol` `space` `a.init` `a` `a.fina`
 
 
@@ -30,17 +30,17 @@ In cousive script, there are letters, that can _only_ connect to the next letter
 For these letters, you need matching subsequent glyphs. 
 
 Depending on the actual handwriting, this is the case for b, o, r, v, w:
-![image](no-calt-ab.png)
+![image](img/no-calt-ab.png)
 
 With the amended calt-feature active, the second ›b‹ and the second ›a‹ connect nicely to their preceding glyph:
-![image](calt-ab.png)
+![image](img/calt-ab.png)
 
 ## Basic concept
 
 I assume, you read the aforementioned [blog post][2]. 
 
 In addition to the (up to) five variants (`basic glyph`, `.isol`, `.init`, `.medi`, `.fina`), you need two more variants, that can connect to a high-ending glyph. One in the middle of a word (I suffixed it with `.highmedi`) and one, that can do so at the end of a word (`.highfina`). 
-![image](glyph-variants-a.png)
+![image](img/glyph-variants-a.png)
 
 Every letter following a high connecting letter gets substituted with its `.highmedi` counterpart. – Or `.highfina`, in case that letter is the last letter in a word. 
 
@@ -52,7 +52,7 @@ This means, you need these additional forms for each letter that can follow one 
 Easy. For every high connecting glyph you create a new glyph with a `.high` suffix. 
 This glyph is not actually used, it is only needed, to generate the necessary letter classes. 
 
-![image](glyph-variants-of-b.png)
+![image](img/glyph-variants-of-b.png)
 
 
 ## Ligatures
@@ -60,14 +60,14 @@ This glyph is not actually used, it is only needed, to generate the necessary le
 Some letter combinations do not work well together. 
 In the case of my font `b` `e` is a combination that does not work well:
 
-![image](calt-vs-lig.png)
+![image](img/calt-vs-lig.png)
 
 So I created an `b_e` ligature (right), that works better. 
 
 This (and any other) ligature is treated lake any other glyph. 
 If it has the described positional alternates, they are substituted as any other glyph. 
 
-![image](calt-and-lig.png)
+![image](img/calt-and-lig.png)
 
 There’s one caveat: The ligature must be in place, _before_ the positional alternates are substituted. This means the substitution code for the ligatures has to go to the beginning of the calt feature: 
 
