@@ -93,7 +93,7 @@ As of now, you have to do this by hand. Im planning on integrating this to the s
 
 I disable the dlig feature, as glyphs would otherwise automatically generate dlig feature code. This ligatures are not discretionary, on the contrary they are an integral part of the calt feature. 
 
-## Wow to run the script?
+## How to run the script?
 
 As any glyphs script: Place it in the scripts folder, refresh the Script menu and select 
 `Build positional calt feature for coursive type` from the menu.
